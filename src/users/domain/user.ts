@@ -6,12 +6,15 @@ import * as RNEA from 'fp-ts/lib/ReadonlyNonEmptyArray'
 import Id, { UniqueId } from '../../core/domain/id'
 import ValidationError from '../../core/domain/validation'
 import createEmail, { EmailProps, EmailValidationError } from './email'
-import createPassword, { Password, PasswordValidationError } from './password'
+import createPassword, {
+  PasswordProps,
+  PasswordValidationError,
+} from './password'
 
 interface UserProps {
   id?: UniqueId
   email: EmailProps
-  password: Password
+  password: PasswordProps
 }
 
 class UserIdValidationError extends ValidationError {

@@ -6,7 +6,7 @@ import * as RNEA from 'fp-ts/lib/ReadonlyNonEmptyArray'
 import ValidationError, { MinLengthError } from '../../core/domain/validation'
 import predicates from '../../core/utils/predicates'
 
-export interface Password {
+export interface PasswordProps {
   value: string
   isHashed?: boolean
 }
@@ -62,7 +62,7 @@ export type PasswordValidationError =
   | PasswordSpecialCharacterRequiredError
 
 const createPassword = (
-  i: Password
+  i: PasswordProps
 ): E.Either<RNEA.ReadonlyNonEmptyArray<PasswordValidationError>, Password> => {
   const testCapitalLetter = predicates.regex(/[A-Z]/)
   const testSpecialCharacter = predicates.regex(/[#?!@$ %^&*-]/)
