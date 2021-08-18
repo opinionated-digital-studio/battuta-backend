@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1629224719069" clover="3.2.0">
-  <project timestamp="1629224719069" name="All files">
-    <metrics statements="19" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4" elements="25" coveredelements="21" complexity="0" loc="19" ncloc="19" packages="3" files="3" classes="3"/>
-    <package name="core.domain">
-      <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-      <file name="validation.ts" path="/home/pandu/git.opinionated.nl/battuta-api/src/core/domain/validation.ts">
-        <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="core.utils">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="predicates.ts" path="/home/pandu/git.opinionated.nl/battuta-api/src/core/utils/predicates.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="users.domain">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="email.ts" path="/home/pandu/git.opinionated.nl/battuta-api/src/users/domain/email.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-      </file>
-    </package>
+<coverage generated="1629277269229" clover="3.2.0">
+  <project timestamp="1629277269229" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>
