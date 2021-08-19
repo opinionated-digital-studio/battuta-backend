@@ -3,7 +3,7 @@ import * as E from 'fp-ts/lib/Either'
 import { flow } from 'fp-ts/lib/function'
 import * as RNEA from 'fp-ts/lib/ReadonlyNonEmptyArray'
 
-import Id from '../../../../core/domain/id'
+import Id, { UniqueId } from '../../../../core/domain/id'
 import * as Email from '../../value-objects/email'
 import * as Password from '../../value-objects/password'
 import { UserIdInvalidError, UserValidationError } from './errors'
@@ -21,12 +21,35 @@ const validatePassword = Password.validate({
 
 const V = E.getApplicativeValidation(RNEA.getSemigroup<UserValidationError>())
 
-export const validate = flow(
-  ({ id = Id.of(), email, password }) =>
-    sequenceS(V)({
-      id: validateId(id),
-      email: Email.validate(email),
-      password: validatePassword(password),
-    }),
-  E.map((result) => User.of({ ...result }))
-)
+type ValidateUserResult = E.Either<
+  RNEA.ReadonlyNonEmptyArray<UserValidationError>,
+  User.IUser
+>
+
+interface ValidateUserInput {
+  id?: UniqueId
+  email: string
+  password: string
+}
+
+interface UserSpecification {
+  emailValidator?: (value: string) => Email.ValidateEmailResult
+  passwordValidator?: (value: string) => Password.ValidatePasswordResult
+}
+
+export const validate = ({
+  emailValidator = Email.validate,
+  passwordValidator = validatePassword,
+}: UserSpecification = {}): ((
+  input: ValidateUserInput
+) => ValidateUserResult) => {
+  return flow(
+    ({ id = Id.of(), email, password }) =>
+      sequenceS(V)({
+        id: validateId(id),
+        email: emailValidator(email),
+        password: passwordValidator(password),
+      }),
+    E.map((result) => User.of({ ...result }))
+  )
+}

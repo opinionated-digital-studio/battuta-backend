@@ -19,4 +19,12 @@ const validateEmail = E.fromPredicate(predicates.email, (errValue) =>
   )
 )
 
-export const validate = flow(validateEmail, E.map(Email.of))
+export type ValidateEmailResult = E.Either<
+  RNEA.ReadonlyNonEmptyArray<EmailInvalidError>,
+  Email.IEmail
+>
+
+export const validate: (value: string) => ValidateEmailResult = flow(
+  validateEmail,
+  E.map(Email.of)
+)

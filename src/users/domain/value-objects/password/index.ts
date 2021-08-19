@@ -18,16 +18,18 @@ export type PasswordSpecification = {
   specialCharactersRegex: RegExp
 }
 
+export type ValidatePasswordResult =
+  | E.Either<
+      RNEA.ReadonlyNonEmptyArray<PasswordValidationError>,
+      Password.IPassword
+    >
+  | E.Right<Password.IPassword>
+
 export const validate = ({
-  minLength,
-  capitalLetterRegex,
-  specialCharactersRegex,
-}: PasswordSpecification): ((
-  value: string
-) => E.Either<
-  RNEA.ReadonlyNonEmptyArray<PasswordValidationError>,
-  Password.IPassword
->) => {
+  minLength = 8,
+  capitalLetterRegex = /[A-Z]/,
+  specialCharactersRegex = /[#?!@$ %^&*-]/,
+}: PasswordSpecification): ((value: string) => ValidatePasswordResult) => {
   const testCapitalLetter = predicates.regex(capitalLetterRegex)
   const testSpecialCharacters = predicates.regex(specialCharactersRegex)
 
